@@ -1,0 +1,106 @@
+<div class="w-full h-[900px] bg-[#000]">
+    <div class="text-center">
+        <h1 class="text-white font-bold inline-block mt-[50px] text-[2.50rem]">Browse</h1>
+        <h3 class="text-[#ccc] ">News collects all the stories you want to read</h3>
+    </div>
+    <div class="flex items-center justify-center gap-6 mt-[50px] mb-[50px]">
+        {% for stori in stori %}
+        <div>
+            <img class="w-[182px] h-[182px] object-cover rounded-t-lg" src="{{ stori.img.url }}" alt="">
+
+            <h1
+                class="text-white font-bold w-[182px] h-[40px] bg-[#333] flex items-center justify-center flex-col rounded-b-lg">
+                {{ stori.nom }}</h1>
+        </div>
+
+       
+        {% endfor %}
+    </div>
+    <div class="overflow-hidden w-[1100px]  mx-auto">
+        <marquee class="text-red-500 !pt-30px inline-block text-[40px]" behavior="" direction="left">
+          Bu yerda eng songi reklamalar bor Misol uchun yangi postlar va kunlar
+        </marquee>
+      </div>
+      
+
+    <hr class="w-[1425px] h-[2px] text-center mx-auto text-[#333] mt-[60px]">
+
+    <div class="flex items-center justify-center gap-6 mt-[50px]">
+        <div class="w-[1222px] flex items-center justify-between">
+            <div class="w-[404px]">
+                <h2 class="text-white text-[4rem] font-bold pt-[8px]">GM</h2>
+                <h3 class="text-white pb-[8px]">Meh synth Schlitz, tempor duis single-origin coffee ea next level ethnic
+                    fingerstache.</h3>
+                <div class="flex items-center gap-3 pt-[8px]">
+                    <i
+                        class="w-[40px] h-[40px] fa-brands fa-facebook-f text-white bg-[#2d5f9a] flex items-center justify-center rounded-full"></i>
+                    <i
+                        class="w-[40px] h-[40px] fa-brands fa-twitter text-white bg-[#00c3f3] flex items-center justify-center rounded-full"></i>
+                    <i
+                        class="w-[40px] h-[40px] fa-brands fa-youtube text-white bg-[#000] flex items-center justify-center rounded-full"></i>
+                    <i
+                        class="w-[40px] h-[40px] fa-solid fa-basketball text-white bg-[#ea4c89] flex items-center justify-center rounded-full"></i>
+                    <i
+                        class="w-[40px] h-[40px] fa-brands fa-instagram text-white bg-[#405de6] flex items-center justify-center rounded-full"></i>
+                </div>
+            </div>
+            <div>
+                <div class="flex items-center gap-2 mt-[40px] inline-block">
+                    <div class="">
+                        <img class="w-[90px] h-[90px] rounded-full mr-[10px] mb-[10px]"
+                            src="https://themes-themegoods.b-cdn.net/grandmagazine/demo/wp-content/uploads/2016/11/pexels-photo-57759-200x200.jpeg"
+                            alt="">
+                    </div>
+                    <div>
+                        <h2 class="text-white font-bold">How Halloween Helps Me Cope With <br> My Friend’s Death</h2>
+                        <div class="flex items-center">
+                            <span class="text-[#ccc] text-[14px]"><i
+                                    class="text-[14px] text-[#ccc] fa-solid fa-clock"></i> November 8, 2016</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex items-center mt-[10px] gap-2">
+                    <div class="">
+                        <img class="w-[90px] h-[90px] rounded-full mr-[10px] mb-[10px]"
+                            src="https://themes-themegoods.b-cdn.net/grandmagazine/demo/wp-content/uploads/2016/11/photo-1451732401917-66d80311800f-200x200.jpg"
+                            alt="">
+                    </div>
+                    <div>
+                        <h2 class="text-white font-bold">Pop Punk Is Still A Thing, Thank You <br> Very Much</h2>
+                        <div class="flex items-center">
+                            <span class="text-[#ccc] text-[14px]"><i
+                                    class="text-[14px] text-[#ccc] fa-solid fa-clock"></i> November 8, 2016</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col items-center justify-center">
+                <h3 class="text-red-600 text-center font-bold text-[30px]">Newsletter</h3>
+                <p class="text-[#ccc] text-center">Don't miss a thing! <br> Sign up to receive daily news</p>
+                <input class="w-[370px] h-[41px] rounded p-[10px] mt-[18px]" type="email">
+                <input class="bg-[#007aff] w-[370px] h-[41px] rounded p-[10px] mt-[18px] mt-[8px] text-white"
+                    type="submit" value="Subscribe">
+            </div>
+        </div>
+    </div>
+
+    <hr class="w-[1425px] h-[2px] text-center mx-auto text-[#333] mt-[60px]">
+
+    <div class="flex items-center justify-center gap-6 my-[20px] inline-block">
+        <div class="w-[1222px] flex items-center justify-between">
+            <div class="text-white text-[12px] w-[1222px] flex items-center justify-between" id="copyright">© Copyright
+                Grand Magazine Theme Demo - Theme by ThemeGoods</div>
+            <div>
+                <ul class="flex items-center">
+                    <li class="text-white text-[12px]">Home</li>
+                    <li class="text-white text-[12px] ml-[10px]">Posts</li>
+                    <li class="text-white text-[12px] ml-[10px]">Categories</li>
+                    <li class="text-white text-[12px] ml-[10px]">Pages</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>

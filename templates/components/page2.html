@@ -1,0 +1,82 @@
+<div
+  class="w-full h-[860px] bg-[#000] flex justify-center items-center pt-[50px] pb-[20px]"
+>
+  <div class="container w-full h-[790px] flex justify-between">
+    <!-- Asosiy Blog -->
+    <div class="w-[626px] h-[693px]">
+      <img
+        class="w-[626px] h-[473px] rounded-lg object-cover"
+        src="{{ asosiy_blog.main_banner.url }}"
+        alt=""
+      />
+      <div class="">
+        <a
+          class="bg-red-700 pt-[3px] px-[15px] pb-[2px] my-[20px] ml-[8px] mb-[5px] inline-block rounded-2xl text-white uppercase"
+          style="letter-spacing: 1px"
+          href="#"
+          >{{ asosiy_blog.category.nom }}</a
+        >
+        <h2 class="ml-[10px] text-white text-2xl font-bold">
+          {{ asosiy_blog.sarlavha }}
+        </h2>
+        <div class="flex mt-[10px]">
+          <div class="flex items-center ml-[10px]">
+            <span class="text-[#64748b]"
+              ><i class="text-sm text-[#64748b] fa-solid fa-clock"></i> Posted
+              On {{ asosiy_blog.format_date_created }}</span
+            >
+          </div>
+          <div class="flex items-center ml-[5px]">
+            <i
+              class="text-[#64748b] text-sm ml-[10px] fa-regular fa-comment"
+            ></i>
+            <span class="ml-[10px] text-[#64748b]">0</span>
+          </div>
+        </div>
+        <p style="color: #c7c7c7" class="text-white ml-[10px] mt-[10px]">
+          {{ asosiy_blog.tasvir }} …
+        </p>
+      </div>
+    </div>
+    <!-- Asosiy Blog -->
+
+    <!-- Bloglar -->
+    <div class="w-[626px] h-[793px]">
+      <div class="flex justify-start items-start flex-wrap gap-6">
+        {% for blog in blogs %}
+        <div class="w-[300px]">
+          <img
+            class="w-[300px] h-[227px] rounded-lg object-cover"
+            src="{{ blog.main_banner.url }}"
+            alt=""
+          />
+          <a
+            class="bg-red-700 pt-[3px] px-[15px] pb-[2px] mt-[10px] inline-block rounded-2xl text-white"
+            style="letter-spacing: 1px"
+            href="#"
+            >{{ blog.category.nom }}</a
+          >
+          <h2 class="text-white text-lg font-semibold mt-[10px]">
+            {{ blog.sarlavha }}
+          </h2>
+          <div class="flex mt-[10px]">
+            <div class="flex items-center">
+              <span class="text-[#64748b]"
+                ><i class="text-sm text-[#64748b] fa-solid fa-clock"></i> Posted
+                On {{ blog.format_date_created }}</span
+              >
+            </div>
+            <div class="flex items-center ml-[5px]">
+              <i
+                class="text-[#64748b] text-sm ml-[10px] fa-regular fa-comment"
+              ></i>
+              <span class="ml-[10px] text-[#64748b]">{{ blog.views }}</span>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <!-- Bloglar -->
+  </div>
+</div>

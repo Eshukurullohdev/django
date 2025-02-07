@@ -1,0 +1,100 @@
+<div class="container mb-[50px] border-dotted botder-b-500 mt-10">
+  <div class="flex items-center justify-between container">
+    <h2
+      class="text-[38px] text-[#000000] font-bold flex flex-col gap-0 leading-[33px]"
+    >
+      <span class="uppercase tracking-wide">{{ current_day }}</span>
+      <span class="uppercase tracking-wide">{{ current_month }}</span>
+    </h2>
+    <div
+      class="w-[550px] h-[50px] bg-[#EFEFEF] rounded-3xl flex items-center justify-between py-1 filter__link__wrapper"
+    ></div>
+  </div>
+
+  <div class="mt-5 grid grid-cols-12 gap-5">
+    {% for post in news %}
+    <a href="#" class="mt-[50px] flex items-center col-span-4">
+      <div>
+        <p class="font-bold w-[17rem]">{{ post.sarlavha }}</p>
+        <span class="text-[#999999]"
+          ><i class="fa-solid fa-clock text-[#999999] mt-[10px]"></i>
+          {{ post.format_date_created }}
+        </span>
+      </div>
+      <div class="ml-[20px]">
+        <img
+          class="w-[120px] h-[120px] mt-[20px] rounded-[5px]"
+          src="https://themes-themegoods.b-cdn.net/grandmagazine/demo/wp-content/uploads/2016/11/photo-1469920783271-4ee08a94d42d-200x200.jpg"
+          alt=""
+        />
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const wrapper = document.querySelector(".filter__link__wrapper");
+    let links = [
+      {
+        name: "Latest",
+        link: "?filter=latest",
+        icon: "fa-solid fa-clock",
+        active: true,
+      },
+      {
+        name: "Trending",
+        link: "?filter=trending",
+        icon: "fa-solid fa-bolt",
+        active: false,
+      },
+      {
+        name: "Hot",
+        link: "?filter=hot",
+        icon: "fa-solid fa-fire",
+        active: false,
+      },
+      {
+        name: "Editor Picks",
+        link: "?filter=editorpicks",
+        icon: "fa-solid fa-heart",
+        active: false,
+      },
+    ];
+    if (!localStorage.getItem("links")) {
+      localStorage.setItem("links", JSON.stringify(links));
+    }
+    const storage = localStorage.getItem("links");
+    JSON.parse(storage).forEach((item, index) => {
+      wrapper.innerHTML += `
+       <a
+        class="font-bold rounded-3xl flex items-center justify-center h-full px-6 ${
+          item.active
+            ? "bg-[#ff2d55] text-white"
+            : "bg-transparent text-[#a7a7a7]"
+        }"
+        href="${item.link}"
+        ><i class="${item.icon} text-[#a7a7a7] mr-[5px] ${
+        item.active ? "!text-white" : "text-[#a7a7a7]"
+      }"></i>${item.name}</a>
+      `;
+    });
+    wrapper.querySelectorAll("a").forEach((item, index) => {
+      item.addEventListener("click", () => {
+        let firstActiveIndex = links.findIndex((link) => link.active);
+
+        // Agar `firstActiveIndex` va bosilgan indeks farq qilsa, eski `active`ni olib tashlaymiz
+        if (firstActiveIndex !== -1 && firstActiveIndex !== index) {
+          links[firstActiveIndex].active = false;
+        }
+
+        // Yangi tanlangan elementni `active` qilamiz
+        links[index].active = true;
+
+        // Yangilangan ro‘yxatni saqlaymiz
+        localStorage.setItem("links", JSON.stringify(links));
+      });
+    });
+  });
+</script>
