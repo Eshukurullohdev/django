@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    {% if messages %}
+    <div id="alert-box-login" class="fixed top-0 left-1/2 transform -translate-x-1/2 mt-5 z-50 w-96 p-4 bg-green-50 border border-green-300 text-green-600 rounded-lg shadow-lg opacity-0 transition-all duration-500">
+      {% for message in messages %}
+        <p class="font-semibold">{{ loop.index }} {{ message }}</p>
+      {% endfor %}
+    </div>
+  {% endif %}
+  
+  <div class="bg-white shadow-md rounded-lg p-8 w-full max-w-md mt-[70px]">
+    <h2 class="text-2xl font-bold text-center mb-6 text-gray-700">Login qiling</h2>
+    <form method="POST" class="space-y-4">
+      {% csrf_token %}
+      <div>
+        <label for="username" class="block text-sm font-medium text-gray-600">Username</label>
+        <input 
+          type="text" 
+          id="username" 
+          name="username" 
+          placeholder="Username" 
+          required
+          class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+        />
+      </div>
+      <div>
+        <label for="password" class="block text-sm font-medium text-gray-600">Parol</label>
+        <div class="relative w-full">
+          <input 
+            type="password" 
+            id="password" 
+            name="password" 
+            placeholder="Parolni kiriting" 
+            required
+            class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+          />
+          <button 
+            type="button" 
+            id="togglePassword" 
+            class="absolute right-3 top-3 text-gray-600 focus:outline-none">
+            👁️
+          </button>
+        </div>
+      </div>
+      <button 
+        type="submit" 
+        class="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 rounded-lg"
+      >
+        Kirish
+      </button>
+    </form>
+
+  
+
+  </div>
+
+  <script>
+    window.addEventListener('load', () => {
+      const alertBox = document.getElementById('alert-box-login');
+      if (alertBox) {
+        // Tepadagi xabarni sekin tushirish
+        alertBox.classList.add('opacity-100', 'translate-y-5');
+        
+        // Xabarni 5 soniyadan keyin animatsiya bilan yo'q qilish
+        setTimeout(() => {
+          alertBox.style.transition = 'transform 0.5s ease, opacity 0.5s ease';
+          alertBox.style.transform = 'translateY(-100px)';
+          alertBox.style.opacity = '0';
+          
+          setTimeout(() => alertBox.remove(), 500); // Elementni to'liq olib tashlash
+        }, 5000);
+      }
+    });
+
+    document.getElementById('togglePassword').addEventListener('click', function () {
+      const passwordInput = document.getElementById('password');
+      const passwordType = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+      passwordInput.setAttribute('type', passwordType);
+      
+      // Ko'rsatish belgisini o'zgartirish
+      this.textContent = passwordType === 'password' ? '👁️' : '🙈';
+    });
+
+  </script>
+</body>
+</html>
