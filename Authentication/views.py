@@ -1,12 +1,12 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login as auth_login
+from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.contrib import messages
 from django.contrib.auth.models import User
 
 # get  --- olmoq
 # post --- yubormoq
 def login(request):
-    
+
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -54,4 +54,5 @@ def register(request):
     return render(request, 'register.html')
 
 
-
+def logout(request):
+    return render(request, 'logout.html')

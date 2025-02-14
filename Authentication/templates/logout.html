@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Page</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 p-10">
+  <h1 class="text-3xl font-bold mb-5">Home Sahifasi borish uchun tizimdan royhatdan o'ting</h1>
+
+  {% if messages %}
+    <div id="alert-box" class="mb-4">
+      {% for message in messages %}
+        <p class="text-white font-semibold bg-red-500 border border-green-300 px-4 py-2 rounded-lg shadow-md mb-2">
+          {{ message }}
+        </p>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  <a href="#" 
+     class="bg-green-500 hover:bg-yellow-600   text-white font-semibold px-4 py-2 rounded-lg">
+     Royhatan O'tish
+  </a>
+
+  <script>
+    setTimeout(() => {
+      const alertBox = document.getElementById('alert-box');
+      if (alertBox) {
+        alertBox.style.transition = 'opacity 0.5s ease';
+        alertBox.style.opacity = '0';
+        setTimeout(() => alertBox.remove(), 500);
+      }
+    }, 5000);
+  </script>
+</body>
+</html>
