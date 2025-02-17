@@ -6,7 +6,8 @@ from django.contrib.auth.models import User
 # get  --- olmoq
 # post --- yubormoq
 def login(request):
-
+    if request.user.is_authenticated:
+        return redirect('/')
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -44,7 +45,6 @@ def register(request):
         
         if user is not None:
             auth_login(request, user)
-            messages.success(request, 'siz muvafaqiyotli kirdingiz')
             return redirect('/')
 
         messages.error(request, "Xatolik yuz berdi")
@@ -55,4 +55,6 @@ def register(request):
 
 
 def logout(request):
+    auth_logout(request)
+    messages.success(request, 'siz muvafaqiyotli chiqdingiz')
     return render(request, 'logout.html')

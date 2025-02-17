@@ -23,17 +23,20 @@
 
       <div>
         <label for="password" class="block text-sm font-medium text-gray-700">Parol:</label>
-        <input type="password" name="password" required class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
+        <input type="password" name="password" required class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" placeholder="Parolni Kiriting!">
       </div>
 
       <div>
         <label for="password_confirm" class="block text-sm font-medium text-gray-700">Parolni tasdiqlang:</label>
-        <input type="password" name="password_confirm" required class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
+        <input type="password" name="password_confirm" required class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" placeholder="Parolni tasdiqlang">
       </div>
 
       <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 rounded-lg">
         Ro'yxatdan o'tish
       </button>
+      <div class="flex items-center justify-center">
+        <a class="text-blue-500" href="{% url 'login' %}">Siz Qaydizmi?</a>
+      </div>
     </form>
 
     {% if messages %}

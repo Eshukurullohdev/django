@@ -1,9 +1,9 @@
 from django.shortcuts import render
 from .models import Blog, Stories
-
+from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 
-
+@login_required(login_url='login')
 def index(request):
     now = timezone.now()
     threeDaysBefore = now - timezone.timedelta(days=3)
