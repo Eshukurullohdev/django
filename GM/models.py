@@ -29,5 +29,4 @@ class Stories(models.Model):
     img = models.ImageField(upload_to='images/stories/')
     nom = models.CharField(max_length=50)
 
-# search: Ukraina --> 1s
-# title: Ukraina, text: Ukrainada urush to'xtatildi, date: 12 yanvar --> 2s
+

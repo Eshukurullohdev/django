@@ -28,8 +28,17 @@ def index(request):
     }
     return render(request, 'home.html', context)
 
-# [1, 2, 3, 4]
-# [4] --> 4
+from django.shortcuts import render, redirect
+from .forms import UserInfoForm
 
-# lte -- less than -- dan kam
-# gte -- greater than -- dan katta
+def collect_user_info(request):
+    if request.method == 'POST':
+        form = UserInfoForm(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data
+            with open('user_data.txt', 'a', encoding='utf-8') as f:
+                f.write(f"{data['first_name']} {data['last_name']} - {data['phone_number']}\n")
+            return redirect('success')
+    else:
+        form = UserInfoForm()
+    return render(request, 'user_info_form.html', {'form': form})
